@@ -34,6 +34,7 @@ def create_app():
         
     app.register_blueprint(auth)
     
+    @app.route('/')
     @app.route('/homepage')
     @login_required
     def homepage():
