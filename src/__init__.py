@@ -15,16 +15,12 @@ def create_app():
     
     app = Flask(__name__)
 
-    # app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('db')
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('db')
 
-    # db.init_app(app)
+    db.init_app(app)
         
-    # migrate = Migrate(app,db)
+    migrate = Migrate(app,db)
     
     app.register_blueprint(public)
-    
-    @app.route('/test')
-    def test():
-        return os.getenv('db','hello')
     
     return app
