@@ -1,4 +1,4 @@
-from flask import Blueprint,request,redirect,url_for,render_template
+from flask import Blueprint,request,redirect,url_for,render_template,flash
 from src.model.database import db
 from src.model.user import User
 from flask_login import login_user,logout_user,login_required
@@ -18,6 +18,7 @@ def login():
             login_user(user)
             return redirect(url_for('homepage'))
         except:
+            flash('Incorrect Username/Password','auth')
             return redirect(url_for('auth.login'))
     else:
         return render_template('/pages/login.html')
