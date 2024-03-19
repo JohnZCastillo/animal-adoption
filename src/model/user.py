@@ -7,5 +7,8 @@ class User(db.Model):
     username:  Mapped[str] =  mapped_column(unique=True)
     password: Mapped[str]
     
+    def __init__(self,username,password):
+        self.username = username
+        self.password = password
     
     
