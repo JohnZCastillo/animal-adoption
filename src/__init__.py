@@ -25,6 +25,6 @@ def create_app():
     
     @app.route('/test')
     def test():
-        return os.getenv('db')
+        return os.getenv('db','hello')
     
     return app
