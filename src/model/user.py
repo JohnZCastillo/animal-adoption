@@ -11,4 +11,14 @@ class User(db.Model):
         self.username = username
         self.password = password
     
+    def is_authenticated():
+        return True
     
+    def is_active():
+        return True
+    
+    def is_anonymous():
+        return False
+    
+    def get_id(self):
+        return self.id
