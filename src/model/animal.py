@@ -7,8 +7,11 @@ class Animal(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True,autoincrement=True)
     name:  Mapped[str]
     age:  Mapped[int]
+    type_id: Mapped[int] = mapped_column(db.ForeignKey("type.id"))
     type: Mapped["Type"] = relationship()
     
-    def __init__(self,name):
+    def __init__(self,name,age,type):
         self.name = name
+        self.age = age
+        self.type = type
     
