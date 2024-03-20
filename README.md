@@ -3,9 +3,7 @@
 
 
 ## Test
-
-### How to run test
-run this code 
+run this code initiate testing  
 ```cmd
-python -m pytest tests/
+pytest
 ```
