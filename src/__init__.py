@@ -6,7 +6,9 @@ from dotenv import load_dotenv
 from .model.user import User
 from .model.database import db
 from .model.animal import Animal
-from flask_login import LoginManager,login_required,login_user
+from flask_login import LoginManager,login_required
+from .routes.animal import animal
+
 import os
 
 env_path = os.path.join(os.path.dirname(__file__),'.env')
@@ -34,6 +36,7 @@ def create_app():
             return None
         
     app.register_blueprint(auth)
+    app.register_blueprint(animal)
     
     @app.route('/')
     @app.route('/homepage')
