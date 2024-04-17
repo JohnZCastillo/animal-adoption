@@ -1,2 +1,2 @@
 runtime: python39
-entery: gunicorn 'src:create_app()'
+entry: gunicorn 'src:create_app()'
