@@ -19,7 +19,7 @@ def login():
             return redirect(url_for('homepage'))
         except:
             flash('Incorrect Username/Password','auth')
-            return redirect(url_for('auth.login'))
+            return render_template('/pages/login.html')
     else:
         return render_template('/pages/login.html')
     
