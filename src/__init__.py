@@ -43,7 +43,6 @@ def create_app():
     
     @app.route('/')
     @app.route('/homepage')
-    @login_required
     def homepage():
         
         animals = Animal.query.all();
