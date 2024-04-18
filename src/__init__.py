@@ -14,10 +14,13 @@ import os
 env_path = os.path.join(os.path.dirname(__file__),'.env')
 load_dotenv(env_path)
     
+UPLOAD_FOLDER =  os.path.join(os.path.dirname(__file__),'./static')
+    
 def create_app():
 
     app = Flask(__name__)
     
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_DEVELOPMENT')    
     app.secret_key = os.getenv('SECRET')
     
@@ -42,7 +45,9 @@ def create_app():
     @app.route('/homepage')
     @login_required
     def homepage():
-        return render_template('/pages/homepage.html')
+        
+        animals = Animal.query.all();
+        return render_template('/pages/homepage.html',animals=animals)
     
     
     return app

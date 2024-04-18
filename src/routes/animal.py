@@ -3,6 +3,8 @@ from src.model.database import db
 from src.model.type import Type
 from src.model.animal import Animal
 from flask_login import login_required
+from flask import current_app
+import os
 
 animal = Blueprint('animal',__name__,url_prefix='/animal')
 
@@ -16,28 +18,34 @@ def register():
         type = request.form.get('type')
         
         try:
+        
+            file = request.files['profile']    
+            file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], file.filename)
+            file.save(file_path)
             
             type = Type.query.filter_by(id=type).one()
-            animal = Animal(name,age,type)
+            animal = Animal(name,age,type,file.filename)
             
             db.session.add(animal)
             db.session.commit()
 
             return "ok"
         
-        except:
-            return "something went wrong"
+        except Exception as e:
+            return 'Something went wrong',500
     else:
-        types = Type.query.all()
-        return render_template('/pages/animal-registration.html',types=types)
+        try:
+            types = Type.query.all()
+            return render_template('/pages/animal-registration.html',types=types)
+        except:
+            return 'Something went wrong',500
+            
     
 
 @animal.post('/type')
 def register_type():
-
-    name = request.form.get('name')
-
     try:
+        name = request.form.get('name')
         type = Type(name)
         
         db.session.add(type)
@@ -46,5 +54,5 @@ def register_type():
         return redirect(url_for('animal.register'))
     
     except:
-        return name
+        return 'somethign went wrong',500
   

@@ -1,6 +1,21 @@
 {% extends "/index.html" %}
 
 {% block content %}
-You're Home
+
+<div class="grid grid-cols-1 justify-items-center md:grid-cols-3 py-2">
+  {% for animal in animals %}
+  <div class="card card-compact w-96 bg-base-100 shadow-xl">
+      <figure><img src="/static/uploads/{{animal.profile}}" alt="{{animal.name}}" /></figure>
+      <div class="card-body">
+        <h2 class="card-title">{{animal.name}}</h2>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <div class="card-actions justify-end">
+          <div class="badge badge-outline">German Shepard</div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
    
 {% endblock %}
