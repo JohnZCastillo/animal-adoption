@@ -1,12 +1,11 @@
-.idea/
-.vscode/
-__pycache__/
-.tox/
-.coverage
-.coverage.*
-htmlcov/
-docs/_build/
-dist/
-.venv/
+# Created by venv; see https://docs.python.org/3/library/venv.html
+
 .env
-app.yaml
+venv/
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+
+__pycache__/
+*.py[cod]
