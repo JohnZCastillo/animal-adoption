@@ -5,7 +5,6 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 from .model.user import User
 from .model.database import db
-from .model.animal import Animal
 from flask_login import LoginManager,login_required
 from .routes.animal import animal
 
